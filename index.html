@@ -3,19 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumicrea homepage</title>
+  <title>Lumicrea's homepage</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Lumicrea</h1>
+     <p>Welcome! Here you’ll find some of my selected work.</p>
+
     <nav>
       <a href="#portfolio">Portfolio</a>
       <a href="about.html">About</a>
     </nav>
   </header>
 
-  <section id="portfolio">
+  <!-- Filter buttons -->
+  <nav id="filter-bar" style="text-align:center; margin: 1rem 0;"></nav>
+
+  <main style="padding:2rem; max-width:1000px; margin:auto;">
+    <div id="portfolio-grid" class="grid"></div>
+  </main>
+
+  <script src="projects.js"></script>
+  <script>
+    const grid = document.getElementById("portfolio-grid");
+    const filterBar = document.getElementById("filter-bar");
+
+    // Collect categories
+    const categories = ["All", ...new Set(Object.values(projects).map(p => p.category))];
+
+    // Render filter buttons
+    categories.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.textContent = cat;
+      btn.className = "filter-btn";
+      btn.addEventListener("click", () => renderProjects(cat));
+      filterBar.appendChild(btn);
+    });
+
+    // Function to render projects
+    function renderProjects(category) {
+      grid.innerHTML = "";
+      Object.values(projects)
+        .filter(p => category === "All" || p.category === category)
+        .forEach(proj => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <a href="project.html?id=${proj.id}">
+              <img src="${proj.image}" alt="${proj.title}" />
+              <h3>${proj.title}</h3>
+              <p class="category">${proj.category}</p>
+            </a>
+          `;
+          grid.appendChild(card);
+        });
+    }
+
+    // Render all projects by default
+    renderProjects("All");
+  </script>
+</body>
+</html>
+
+
+<!--  <section id="portfolio">
     <h2>My Projects</h2>
     <div class="grid">
       <div class="card" onclick="showProject('Project One')">
@@ -36,5 +88,5 @@
 
   <script src="script.js"></script>
 </body>
-</html>
+</html>-->
 
