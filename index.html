@@ -12,7 +12,7 @@
      <p>Welcome! Here you’ll find some of my selected work.</p>
 
     <nav>
-      <a href="#portfolio">Portfolio</a>
+      <a href="index.html">Portfolio</a>
       <a href="about.html">About</a>
     </nav>
   </header>
@@ -52,7 +52,7 @@
           card.innerHTML = `
             <a href="project.html?id=${proj.id}">
               <img src="${proj.image}" alt="${proj.title}" />
-              <h3>${proj.title}</h3>
+              <h3 class="ptitle">${proj.title}</h3>
               <p class="category">${proj.category}</p>
             </a>
           `;
