@@ -36,9 +36,19 @@ h1 a:visited {
 }
 
 h3 a{
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #333;
+  font-size: 60px;
+  color: #444;
+  font-weight: bold;
+}
+
+.ptitle a{
+  font-size: 60px;
+  color: #444;
+  font-weight: bold;
+}
+.ptitle a:visited{
+  font-size: 60px;
+  color: #444;
   font-weight: bold;
 }
 
