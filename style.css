@@ -34,9 +34,14 @@ section {
 }
 
 .grid {
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  
+
 }
 
 .card {
