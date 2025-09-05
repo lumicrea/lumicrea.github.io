@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">← Back to Portfolio</a></h1>
+  </header>
+
+  <main id="project-content" style="padding:2rem; max-width:800px; margin:auto;">
+    <!-- Project details will load here -->
+  </main>
+
+  <div id="project-nav" style="display:flex; justify-content:space-between; max-width:800px; margin:2rem auto; padding:0 2rem;">
+    <!-- Navigation buttons will load here -->
+  </div>
+
+  <script src="projects.js"></script>
+  <script>
+    // Get project ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"), 10);
+
+    const project = projects[id];
+    const contentDiv = document.getElementById("project-content");
+    const navDiv = document.getElementById("project-nav");
+
+    if (project) {
+      // Show project content
+      contentDiv.innerHTML = `
+        <h2>${project.title}</h2>
+        <img src="${project.image}" alt="${project.title}" style="max-width:100%; border-radius:8px; margin:1rem 0;" />
+        <p>${project.description}</p>
+      `;
+
+      // Navigation
+      const prevId = id - 1;
+      const nextId = id + 1;
+
+      let navHtml = "";
+      if (projects[prevId]) {
+        navHtml += `<a href="project.html?id=${prevId}" class="btn">&larr; ${projects[prevId].title}</a>`;
+      } else {
+        navHtml += `<span></span>`; // placeholder to balance layout
+      }
+
+      if (projects[nextId]) {
+        navHtml += `<a href="project.html?id=${nextId}" class="btn">${projects[nextId].title} &rarr;</a>`;
+      }
+
+      navDiv.innerHTML = navHtml;
+    } else {
+      contentDiv.innerHTML = "<p>Project not found.</p>";
+    }
+  </script>
+</body>
+</html>
