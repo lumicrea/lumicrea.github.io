@@ -22,47 +22,47 @@ a {
 }
 
 h1 a {
-  font-size: 60px;
+  font-size: 1rem;
   color: #333;
   font-weight: bold;
 }
 
 h1 a:hover {
-  font-size: 60px;
+  font-size: 1rem;
   color: #0070f3;
   font-weight: bold;
 }
 
 
 h1 a:visited {
-  font-size: 60px;
+  font-size: 1rem;
   color: #444;
   font-weight: bold;
 }
 
 h3 a{
-  font-size: 60px;
+  font-size: 1rem;
   color: #000000;
   font-weight: bold;
 }
 
 .ptitle a{
   text-decoration: none;
-  font-size: 60px;
+  font-size: 1rem;
   color: #000000;
   font-weight: bold;
 }
 .ptitle a:visited{
   text-decoration: none;
-  font-size: 60px;
+  font-size: 1rem;
   color: #000000;
   font-weight: bold;
 }
 
 .ptitle a:hover{
   text-decoration: none;
-  font-size: 60px;
-  color: #0000044;
+  font-size: 1rem;
+  color: #0070f3;
   font-weight: bold;
 }
 
