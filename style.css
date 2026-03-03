@@ -16,6 +16,11 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 h1 a {
   font-size: 60px;
   color: #333;
@@ -37,18 +42,27 @@ h1 a:visited {
 
 h3 a{
   font-size: 60px;
-  color: #444;
+  color: #000000;
   font-weight: bold;
 }
 
 .ptitle a{
+  text-decoration: none;
   font-size: 60px;
-  color: #444;
+  color: #000000;
   font-weight: bold;
 }
 .ptitle a:visited{
+  text-decoration: none;
   font-size: 60px;
-  color: #444;
+  color: #000000;
+  font-weight: bold;
+}
+
+.ptitle a:hover{
+  text-decoration: none;
+  font-size: 60px;
+  color: #0000044;
   font-weight: bold;
 }
 
