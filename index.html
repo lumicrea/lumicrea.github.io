@@ -51,8 +51,7 @@
           const card = document.createElement("div");
           card.className = "card";
           card.innerHTML = `
-         //   <a href="project.html?id=${proj.id}">
-               <a href="proj.link}">
+               <a href="${proj.link}">
               <img src="${proj.image}" alt="${proj.title}" />
               <h3 class="ptitle">${proj.title}</h3>
               <p class="category">${proj.category}</p>
@@ -61,7 +60,7 @@
           grid.appendChild(card);
         });
     }
-
+//   <a href="project.html?id=${proj.id}"> 
     // Render all projects by default
     renderProjects("All");
   </script>
