@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CityLife Score – Montgomery</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+margin:0;
+display:flex;
+height:100vh;
+}
+
+#map{
+flex:2;
+}
+
+#sidebar{
+flex:1;
+padding:20px;
+overflow:auto;
+background:#f4f4f4;
+}
+
+h1{
+margin-top:0;
+}
+
+.score{
+font-size:40px;
+font-weight:bold;
+}
+
+.green{color:#2ecc71}
+.yellow{color:#f1c40f}
+.orange{color:#e67e22}
+.red{color:#e74c3c}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+td,th{
+padding:8px;
+border-bottom:1px solid #ddd;
+text-align:left;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<div id="sidebar">
+
+<h1>CityLife Score</h1>
+
+<div id="neighborhoodInfo">
+Click a neighborhood
+</div>
+
+<h2>Neighborhood Ranking</h2>
+
+<table id="rankingTable">
+<thead>
+<tr>
+<th>Neighborhood</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+// Sample dataset (replace with real Montgomery data later)
+
+const neighborhoods = [
+
+{
+name:"Downtown",
+coords:[32.3668,-86.3000],
+metrics:{
+safetyIncidents:120,
+complaints:35,
+construction:18,
+parks:1
+}
+},
+
+{
+name:"Old Cloverdale",
+coords:[32.3540,-86.2850],
+metrics:{
+safetyIncidents:40,
+complaints:12,
+construction:6,
+parks:4
+}
+},
+
+{
+name:"East Montgomery",
+coords:[32.3830,-86.2000],
+metrics:{
+safetyIncidents:65,
+complaints:15,
+construction:10,
+parks:3
+}
+},
+
+{
+name:"West Montgomery",
+coords:[32.3650,-86.3400],
+metrics:{
+safetyIncidents:90,
+complaints:25,
+construction:12,
+parks:2
+}
+}
+
+]
+
+function normalize(values){
+
+let max=Math.max(...values)
+let min=Math.min(...values)
+
+return values.map(v=>100*(v-min)/(max-min))
+
+}
+
+function calculateScores(){
+
+let safetyVals=neighborhoods.map(n=>n.metrics.safetyIncidents)
+let complaintVals=neighborhoods.map(n=>n.metrics.complaints)
+let constructionVals=neighborhoods.map(n=>n.metrics.construction)
+let parkVals=neighborhoods.map(n=>n.metrics.parks)
+
+let safetyNorm=normalize(safetyVals).map(v=>100-v)
+let cleanNorm=normalize(complaintVals).map(v=>100-v)
+let constructionNorm=normalize(constructionVals).map(v=>100-v)
+let parkNorm=normalize(parkVals)
+
+neighborhoods.forEach((n,i)=>{
+
+let score=(
+
+0.35*safetyNorm[i]+
+0.25*cleanNorm[i]+
+0.20*constructionNorm[i]+
+0.20*parkNorm[i]
+
+)*10
+
+n.score=Math.round(score)
+
+})
+
+}
+
+calculateScores()
+
+function getColor(score){
+
+if(score>=800) return "#2ecc71"
+if(score>=600) return "#f1c40f"
+if(score>=400) return "#e67e22"
+return "#e74c3c"
+
+}
+
+function getScoreClass(score){
+
+if(score>=800) return "green"
+if(score>=600) return "yellow"
+if(score>=400) return "orange"
+return "red"
+
+}
+
+var map=L.map('map').setView([32.3668,-86.3000],12)
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map)
+
+neighborhoods.forEach(n=>{
+
+let marker=L.circleMarker(n.coords,{
+radius:12,
+fillColor:getColor(n.score),
+color:"#333",
+weight:1,
+fillOpacity:0.9
+}).addTo(map)
+
+marker.on("click",()=>showNeighborhood(n))
+
+})
+
+function showNeighborhood(n){
+
+document.getElementById("neighborhoodInfo").innerHTML=`
+
+<h2>${n.name}</h2>
+
+<div class="score ${getScoreClass(n.score)}">
+${n.score}
+</div>
+
+<p><b>Safety Incidents:</b> ${n.metrics.safetyIncidents}</p>
+<p><b>Service Complaints:</b> ${n.metrics.complaints}</p>
+<p><b>Construction Projects:</b> ${n.metrics.construction}</p>
+<p><b>Parks Nearby:</b> ${n.metrics.parks}</p>
+
+`
+
+}
+
+function renderRanking(){
+
+let sorted=[...neighborhoods].sort((a,b)=>b.score-a.score)
+
+let tbody=document.querySelector("#rankingTable tbody")
+
+tbody.innerHTML=""
+
+sorted.forEach(n=>{
+
+let row=document.createElement("tr")
+
+row.innerHTML=`
+<td>${n.name}</td>
+<td>${n.score}</td>
+`
+
+tbody.appendChild(row)
+
+})
+
+}
+
+renderRanking()
+
+</script>
+
+</body>
+</html>
+
