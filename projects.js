@@ -5,17 +5,15 @@ const projects = {
     image: "project1.png",
     description: "This is a detailed description of Project One.The project is all about... and I wanted to share with you...see",
     category: "Analytics"
-    link: "projects/project1.html",  // Link to custom page
-    repo: "https://github.com/lumicrea/project1"
+    link: "projects/project1.html"  // Link to custom page
   },
   2: {
     id: 2,
     title: "Project Two",
     image: "project2.png",
     description: "This is a detailed description of Project Two.",
-    category: "Design"
-    link: "projects/project1.html",  // Link to custom page
-    repo: "https://github.com/lumicrea/project1"
+    category: "AI"
+    link: "projects/project2.html"  // Link to custom page
   },
   3: {
     id: 3,
@@ -23,16 +21,15 @@ const projects = {
     image: "project1.png",
     description: "This is a detailed description of Project Three.",
     category: "Research"
-    link: "projects/project1.html",  // Link to custom page
-    repo: "https://github.com/lumicrea/project1"
+    link: "projects/project1.html"  // Link to custom page
+    
   },
   4: {
     id: 4,
     title: "Project Four",
     image: "project2.png",
-    description: "This is a detailed description of Project Four.",
+    description: "This is a detailed description of Project Four."
     category: "Web Apps"
     link: "projects/project1.html",  // Link to custom page
-    repo: "https://github.com/lumicrea/project1"
   }
 };
