@@ -13,7 +13,7 @@ const projects = {
     image: "project2.png",
     description: "This is a detailed description of Project Two.",
     category: "AI"
-    link: "projects/project2.html"  // Link to custom page
+    link: "<a href="Hackathon26/citylife1.html">City Life</a>"  // Link to custom page
   },
   3: {
     id: 3,
