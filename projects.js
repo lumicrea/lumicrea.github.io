@@ -3,8 +3,8 @@ const projects = {
     id: 1,
     title: "Hackathon 2026",
     image: "project1.png",
-    description: "This is a detailed description of Project One.The project is all about... and I wanted to share with you...see",
-    category: "Analytics",
+    description: "Participated to my first hackathon, built an web app by vibe coding, using ... ",
+    category: "AI",
     link: "Hackathon26/citylife1.html
   },
   
