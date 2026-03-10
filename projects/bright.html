@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bright Data Demo</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:40px;
+}
+
+button{
+  padding:10px 16px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+#result{
+  margin-top:20px;
+  padding:10px;
+  background:#f4f4f4;
+  border-radius:6px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Bright Data Demo</h1>
+
+<p>This page fetches data through a Cloudflare Worker.</p>
+
+<button onclick="loadData()">Fetch Data</button>
+
+<div id="result">Waiting for request...</div>
+
+<script>
+
+async function loadData() {
+
+  const workerURL =
+  "https://proud-bread-acd2.reeamm.workers.dev/";
+
+  const resultDiv =
+  document.getElementById("result");
+
+  resultDiv.innerText = "Loading...";
+
+  try {
+
+    const response =
+    await fetch(workerURL);
+
+    if(!response.ok){
+      throw new Error("Network response was not ok");
+    }
+
+    const text =
+    await response.text();
+
+    try{
+
+      const json = JSON.parse(text);
+
+      resultDiv.innerText =
+      JSON.stringify(json, null, 2);
+
+    }catch{
+
+      resultDiv.innerText =
+      text;
+
+    }
+
+  }
+  catch(error){
+
+    resultDiv.innerText =
+    "Error: " + error;
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
