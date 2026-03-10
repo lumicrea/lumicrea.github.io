@@ -18,10 +18,10 @@ const projects = {
   },
   3: {
     id: 3,
-    title: "Project Three",
-    image: "project2.png",
-    description: "This is a detailed description of Project Three. TBD",
-    category: "Research"
+    title: "Weather from open API",
+    image: "project3.png",
+    description: "Just trying out open data sources",
+    category: "Data"
 
     
   },
