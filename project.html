@@ -38,6 +38,11 @@
         <p>${project.link}</p>
       `;
 
+      if (project.link) {
+    html += `<a class="project-link" href="${project.link}">See full project →</a>`;
+    }
+
+
       // Navigation
       const prevId = id - 1;
       const nextId = id + 1;
