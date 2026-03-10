@@ -8,10 +8,8 @@ async function loadWeather() {
   const weather = data.current_weather;
 
   document.getElementById("weather").innerHTML = `
-    <p>Temperature: ${weather.temperature} °C</p>
+    <h2>Temperature: ${weather.temperature} °C</h2>
     <p>Wind speed: ${weather.windspeed} km/h</p>
-    <p>Time: ${weather.time}</p>
+    <small>Updated: ${weather.time}</small>
   `;
 }
-
-loadWeather();
