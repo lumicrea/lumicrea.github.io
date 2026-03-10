@@ -8,18 +8,25 @@
   <h1>Montgomery Open Data (Sample)</h1>
   <pre id="output">Loading...</pre>
 
-  <script>
-    // Replace with your Cloudflare Worker URL
-    const workerUrl = "https://noisy-truth-dd8f.reeamm.workers.dev/"
+<script>
+  async function loadData() {
+    const contentDiv = document.getElementById("data");
+    try {
+      const res = await fetch("https://noisy-truth-dd8f.reeamm.workers.dev/");
+      if (!res.ok) throw new Error(`HTTP error! ${res.status}`);
+      const data = await res.json(); // <-- parse JSON
+      console.log(data); // for debugging
 
-    fetch(workerUrl)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("output").textContent = JSON.stringify(data.result.records, null, 2)
-      })
-      .catch(err => {
-        document.getElementById("output").textContent = "Error: " + err
-      })
-  </script>
+      contentDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+    } catch (err) {
+      contentDiv.innerHTML = `<p style="color:red">Error: ${err.message}</p>`;
+    }
+  }
+
+  loadData();
+</script>
+
+<div id="data">Loading…</div>
+
 </body>
 </html>
