@@ -12,15 +12,15 @@ const projects = {
     id: 2,
     title: "Project Two",
     image: "project2.png",
-    description: "This is a detailed description of Project Two.",
+    description: "This is a detailed description of Project Two. TBD",
     category: "AI",
 
   },
   3: {
     id: 3,
     title: "Project Three",
-    image: "project1.png",
-    description: "This is a detailed description of Project Three.",
+    image: "project2.png",
+    description: "This is a detailed description of Project Three. TBD",
     category: "Research"
 
     
@@ -29,7 +29,7 @@ const projects = {
     id: 4,
     title: "Project Four",
     image: "project2.png",
-    description: "This is a detailed description of Project Four.",
+    description: "This is a detailed description of Project Four. TBD",
     category: "Web Apps"
   }
 };
