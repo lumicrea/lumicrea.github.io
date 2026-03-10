@@ -12,7 +12,7 @@
   async function loadData() {
     const contentDiv = document.getElementById("data");
     try {
-      const res = await fetch("https://noisy-truth-dd8f.reeamm.workers.dev/");
+      const res = await fetch("https://noisy-truth-dd8f.reeamm.workers.dev");
       if (!res.ok) throw new Error(`HTTP error! ${res.status}`);
       const data = await res.json(); // <-- parse JSON
       console.log(data); // for debugging
