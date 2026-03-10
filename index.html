@@ -51,8 +51,7 @@
           const card = document.createElement("div");
           card.className = "card";
           card.innerHTML = `
-               <a href="project.html?id=${proj.id}"
-               / Render all projects by default
+               <a href="project.html?id=${proj.id}"/a>
               <img src="${proj.image}" alt="${proj.title}" />
               <h3 class="ptitle">${proj.title}</h3>
               <p class="category">${proj.category}</p>
@@ -67,26 +66,4 @@
 </html>
 
 
-<!--  <section id="portfolio">
-    <h2>My Projects</h2>
-    <div class="grid">
-      <div class="card" onclick="showProject('Project One')">
-        <img src="project1.png" alt="Project One" />
-        <h3>Project One</h3>
-      </div>
-      <div class="card" onclick="showProject('Project Two')">
-        <img src="project2.png" alt="Project Two" />
-        <h3>Project Two</h3>
-      </div>
-    </div>
-  </section>
-
-
-  <footer>
-    <p>&copy; 2025 Lumicrea</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>-->
 
