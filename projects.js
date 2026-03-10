@@ -1,19 +1,19 @@
 const projects = {
   1: {
     id: 1,
-    title: "Project One",
+    title: "Hackathon 2026",
     image: "project1.png",
     description: "This is a detailed description of Project One.The project is all about... and I wanted to share with you...see",
-    category: "Analytics"
-   
+    category: "Analytics",
+    link: "Hackathon26/citylife1.html
   },
+  
   2: {
     id: 2,
     title: "Project Two",
     image: "project2.png",
     description: "This is a detailed description of Project Two.",
     category: "AI",
-    link: "projects/project1.html"  // Link to custom page
 
   },
   3: {
