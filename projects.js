@@ -5,7 +5,7 @@ const projects = {
     image: "project1.png",
     description: "Participated to my first hackathon, built an web app by vibe coding, using ... ",
     category: "AI",
-    link: "Hackathon26/citylife1.html
+    link: "Hackathon26/citylife1.html"
   },
   
   2: {
