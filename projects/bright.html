@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Montgomery Data Demo</title>
+</head>
 <body>
+  <h1>Montgomery Open Data (Sample)</h1>
+  <pre id="output">Loading...</pre>
 
-<h1>Bright Data Demo</h1>
+  <script>
+    // Replace with your Cloudflare Worker URL
+    const workerUrl = "https://noisy-truth-dd8f.reeamm.workers.dev/"
 
-<button onclick="loadData()">Fetch Data</button>
-
-<p id="result">Waiting...</p>
-
-<script src="app.js"></script>
-
+    fetch(workerUrl)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("output").textContent = JSON.stringify(data.result.records, null, 2)
+      })
+      .catch(err => {
+        document.getElementById("output").textContent = "Error: " + err
+      })
+  </script>
 </body>
 </html>
