@@ -2,28 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Montgomery Data Demo</title>
+  <title>Montgomery Open Data Example</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    pre { background: #f4f4f4; padding: 1rem; border-radius: 5px; overflow-x: auto; }
+  </style>
 </head>
 <body>
-  <h1>Montgomery Open Data (Sample)</h1>
-  <pre id="output">Loading...</pre>
+
+<h1>Montgomery Open Data</h1>
+<div id="data">Loading data…</div>
 
 <script>
-  async function loadData() {
-    const contentDiv = document.getElementById("data");
-    try {
-      const res = await fetch("https://noisy-truth-dd8f.reeamm.workers.dev");
-      if (!res.ok) throw new Error(`HTTP error! ${res.status}`);
-      const data = await res.json(); // <-- parse JSON
-      console.log(data); // for debugging
+async function loadData() {
+  const contentDiv = document.getElementById("data");
 
-      contentDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-    } catch (err) {
-      contentDiv.innerHTML = `<p style="color:red">Error: ${err.message}</p>`;
-    }
+  try {
+    // Replace this URL with your Worker URL
+    const workerUrl = "https://noisy-truth-dd8f.reeamm.workers.dev"; 
+    const res = await fetch(workerUrl);
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+    const data = await res.json();
+
+    // Show JSON nicely
+    contentDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+  } catch (err) {
+    contentDiv.innerHTML = `<p style="color:red">Error: ${err.message}</p>`;
+    console.error(err);
   }
+}
 
-  loadData();
+loadData();
 </script>
 
 </body>
